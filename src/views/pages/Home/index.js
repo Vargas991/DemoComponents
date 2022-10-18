@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-const index = () => {
+const Home = () => {
   return (
-    <div>Este es el Home</div>
-  )
-}
+    <ul>
+      <Link to="/map">Map</Link>
+      <Link to="/events">Events</Link>
+    </ul>
+  );
+};
 
-export default index
+export default Home;
