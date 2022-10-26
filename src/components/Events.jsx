@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import DatePicker, { Calendar, DateObject } from "react-multi-date-picker";
+import DatePicker, {
+  Calendar,
+  DateObject,
+  getAllDatesInRange,
+} from "react-multi-date-picker";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import { useForm, Controller } from "react-hook-form";
 
@@ -118,8 +122,10 @@ export const Events = () => {
                 minDate={new DateObject()}
                 placeholder="End Date"
                 value={value.endDate}
+                range
                 onChange={(startDate) => {
                   onChange(handleChangeDate(name, value));
+                  console.log(getAllDatesInRange(startDate));
                 }}
                 mapDays={({ date }) => {
                   let enableDay = date.weekDay.name;
@@ -146,12 +152,20 @@ export const Events = () => {
           }}
         /> */}
       </div>
-
-      {/* <DatePicker
-        disableDayPicker
-        format="HH:mm"
-        plugins={[<TimePicker hideSeconds />]}
-      /> */}
+      <div>
+        <DatePicker
+          disableDayPicker
+          format="HH:mm"
+          plugins={[<TimePicker hideSeconds />]}
+        />
+        <DatePicker
+          disableDayPicker
+          format="HH:mm"
+          plugins={[<TimePicker hideSeconds />]}
+        />
+      </div>
+      <button>Cancelar</button>
+      <button>Continuar</button>
       {/* <Calendar
         value={value}
         onChange={setValue}
